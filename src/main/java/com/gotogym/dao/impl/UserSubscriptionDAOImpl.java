@@ -13,9 +13,9 @@ import org.hibernate.Transaction;
 
 import com.gotogym.dao.UserSubscriptionDAO;
 import com.gotogym.error.ApplicationException;
-import com.gotogym.error.ErrorConstants;
 import com.gotogym.hibernate.config.HibernateConfig;
 import com.gotogym.model.UserSubscription;
+import com.gotogym.utils.ErrorConstants;
 
 public class UserSubscriptionDAOImpl implements UserSubscriptionDAO {
 

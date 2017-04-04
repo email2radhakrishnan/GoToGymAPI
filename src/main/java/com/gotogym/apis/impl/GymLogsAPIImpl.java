@@ -16,8 +16,8 @@ import javax.ws.rs.core.Response;
 import com.gotogym.dao.impl.GymLogsDAOImpl;
 import com.gotogym.error.ApplicationException;
 import com.gotogym.error.Error;
-import com.gotogym.error.ErrorConstants;
 import com.gotogym.model.GymLogs;
+import com.gotogym.utils.ErrorConstants;
 
 @Path("/gymlogs")
 public class GymLogsAPIImpl implements GenericAPI {

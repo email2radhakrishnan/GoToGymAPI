@@ -16,8 +16,8 @@ import javax.ws.rs.core.Response;
 import com.gotogym.dao.impl.PaymentDetailsDAOImpl;
 import com.gotogym.error.ApplicationException;
 import com.gotogym.error.Error;
-import com.gotogym.error.ErrorConstants;
 import com.gotogym.model.PaymentDetails;
+import com.gotogym.utils.ErrorConstants;
 
 @Path("/paymentDetails")
 public class PaymentDetailsAPIImpl implements GenericAPI {

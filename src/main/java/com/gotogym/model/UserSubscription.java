@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.Type;
+
 @XmlRootElement
 @Entity
 @Table(name = "user_subscription")
@@ -33,6 +35,7 @@ public class UserSubscription {
 	Date expiryDate;
 
 	@Column(name = "active")
+	@Type(type="yes_no")
 	Boolean isActive;
 
 	public UserSubscription() {

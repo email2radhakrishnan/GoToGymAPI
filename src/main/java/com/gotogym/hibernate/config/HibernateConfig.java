@@ -3,6 +3,7 @@ package com.gotogym.hibernate.config;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+import com.gotogym.model.GymClient;
 import com.gotogym.model.GymLogs;
 import com.gotogym.model.PaymentDetails;
 import com.gotogym.model.Plan;
@@ -19,7 +20,7 @@ public class HibernateConfig {
 		if (factory == null) {
 			factory = new AnnotationConfiguration().configure().addAnnotatedClass(Plan.class)
 					.addAnnotatedClass(GymLogs.class).addAnnotatedClass(PaymentDetails.class)
-					.addAnnotatedClass(UserSubscription.class).buildSessionFactory();
+					.addAnnotatedClass(UserSubscription.class).addAnnotatedClass(GymClient.class).buildSessionFactory();
 		}
 		return factory;
 	}

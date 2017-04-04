@@ -9,9 +9,9 @@ import org.hibernate.Transaction;
 
 import com.gotogym.dao.PlanDAO;
 import com.gotogym.error.ApplicationException;
-import com.gotogym.error.ErrorConstants;
 import com.gotogym.hibernate.config.HibernateConfig;
 import com.gotogym.model.Plan;
+import com.gotogym.utils.ErrorConstants;
 
 public class PlanDAOImpl implements PlanDAO {
 

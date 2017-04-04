@@ -9,41 +9,40 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.gotogym.dao.GymLogsDAO;
+import com.gotogym.dao.GymClientDAO;
 import com.gotogym.error.ApplicationException;
 import com.gotogym.hibernate.config.HibernateConfig;
+import com.gotogym.model.GymClient;
 import com.gotogym.model.GymLogs;
 import com.gotogym.utils.ErrorConstants;
 
-public class GymLogsDAOImpl implements GymLogsDAO {
+public class GymClientDAOImpl implements GymClientDAO {
 
 	private SessionFactory factory;
-	private static GymLogsDAOImpl gymLogsDAOImpl;
+	private static GymClientDAOImpl gymClientDAOImpl;
 
-	private GymLogsDAOImpl() {
+	private GymClientDAOImpl() {
 		factory = HibernateConfig.getSessionFactory();
 	}
 
-	public static GymLogsDAOImpl getObject() {
-
-		if (gymLogsDAOImpl == null) {
-			gymLogsDAOImpl = new GymLogsDAOImpl();
+	public static GymClientDAOImpl getObject() {
+		if (gymClientDAOImpl == null) {
+			gymClientDAOImpl = new GymClientDAOImpl();
 		}
-
-		return gymLogsDAOImpl;
+		return gymClientDAOImpl;
 	}
 
 	@Override
-	public List<GymLogs> getLogsByClientName(String clientName) throws ApplicationException {
+	public List<GymClient> getGymClientByName(String clientName) throws ApplicationException {
 
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<GymLogs> gymLogs = null;
+		List<GymClient> gymClients = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery(" from com.gotogym.model.GymLogs where clientName = :clientName");
+			Query query = session.createQuery(" from com.gotogym.model.GymClient where clientName = :clientName");
 			query.setParameter("clientName", clientName);
-			gymLogs = query.list();
+			gymClients = query.list();
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -58,20 +57,18 @@ public class GymLogsDAOImpl implements GymLogsDAO {
 		} finally {
 			session.close();
 		}
-		return gymLogs;
+		return gymClients;
 	}
 
 	@Override
-	public List<GymLogs> getLogsByUserName(String userName) throws ApplicationException {
+	public GymClient getGymClientByPhone(Long phone) throws ApplicationException {
 
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<GymLogs> gymLogs = null;
+		GymClient gymClient = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery(" from com.gotogym.model.GymLogs where userName = :userName");
-			query.setParameter("userName", userName);
-			gymLogs = query.list();
+			gymClient = (GymClient) session.get(GymClient.class, phone);
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -86,20 +83,20 @@ public class GymLogsDAOImpl implements GymLogsDAO {
 		} finally {
 			session.close();
 		}
-		return gymLogs;
+		return gymClient;
 	}
 
 	@Override
-	public List<GymLogs> getLogsByPlanName(String planName) throws ApplicationException {
+	public List<GymClient> getGymClientByEmail(String email) throws ApplicationException {
 
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<GymLogs> gymLogs = null;
+		List<GymClient> gymClients = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery(" from com.gotogym.model.GymLogs where planName = :planName");
-			query.setParameter("planName", planName);
-			gymLogs = query.list();
+			Query query = session.createQuery(" from com.gotogym.model.GymClient where email = :email");
+			query.setParameter("email", email);
+			gymClients = query.list();
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -114,20 +111,20 @@ public class GymLogsDAOImpl implements GymLogsDAO {
 		} finally {
 			session.close();
 		}
-		return gymLogs;
+		return gymClients;
 	}
 
 	@Override
-	public List<GymLogs> getLogsByDate(Date logDate) throws ApplicationException {
+	public List<GymClient> getGymClientByCity(String city) throws ApplicationException {
 
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<GymLogs> gymLogs = null;
+		List<GymClient> gymClients = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery(" from com.gotogym.model.GymLogs where dateVisited = :date_visited");
-			query.setParameter("date_visited", logDate);
-			gymLogs = query.list();
+			Query query = session.createQuery(" from com.gotogym.model.GymClient where city = :city");
+			query.setParameter("city", city);
+			gymClients = query.list();
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -142,19 +139,20 @@ public class GymLogsDAOImpl implements GymLogsDAO {
 		} finally {
 			session.close();
 		}
-		return gymLogs;
+		return gymClients;
 	}
 
 	@Override
-	public List<GymLogs> getPaidLogs() throws ApplicationException {
+	public List<GymClient> getGymClientByRegDate(Date regDate) throws ApplicationException {
 
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<GymLogs> gymLogs = null;
+		List<GymClient> gymClients = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery(" from com.gotogym.model.GymLogs where isPaid = 'Y'");
-			gymLogs = query.list();
+			Query query = session.createQuery(" from com.gotogym.model.GymClient where registerDate = :regDate");
+			query.setParameter("regDate", regDate);
+			gymClients = query.list();
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -169,19 +167,17 @@ public class GymLogsDAOImpl implements GymLogsDAO {
 		} finally {
 			session.close();
 		}
-		return gymLogs;
+		return gymClients;
 	}
 
-	@Override
-	public List<GymLogs> getUnPaidLogs() throws ApplicationException {
+	public void registerGymClient(GymClient gymClient) throws ApplicationException {
 
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<GymLogs> gymLogs = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery(" from com.gotogym.model.GymLogs where isPaid = 'N'");
-			gymLogs = query.list();
+			session.save(gymClient);
+			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -196,7 +192,36 @@ public class GymLogsDAOImpl implements GymLogsDAO {
 		} finally {
 			session.close();
 		}
-		return gymLogs;
+	}
+
+	public void updateClientPassword(String passSalt, String passHash, Long phone) throws ApplicationException {
+
+		Session session = factory.openSession();
+		Transaction tx = null;
+		List<GymClient> gymClients = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery(
+					"Update com.gotogym.model.GymClient set salt = :salt, hash = :hash where phone = :phone");
+			query.setParameter("salt", passSalt);
+			query.setParameter("hash", passHash);
+			query.setParameter("phone", phone);
+			query.executeUpdate();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} catch (Exception e) {
+			ApplicationException appExce = new ApplicationException(ErrorConstants.ERROR_CODE_GENERAL,
+					ErrorConstants.ERROR_DESC_GENERAL);
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+			throw appExce;
+		} finally {
+			session.close();
+		}
 	}
 
 }

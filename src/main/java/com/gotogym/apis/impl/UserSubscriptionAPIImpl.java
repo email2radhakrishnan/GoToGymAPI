@@ -19,8 +19,8 @@ import org.json.JSONObject;
 import com.gotogym.dao.impl.UserSubscriptionDAOImpl;
 import com.gotogym.error.ApplicationException;
 import com.gotogym.error.Error;
-import com.gotogym.error.ErrorConstants;
 import com.gotogym.model.UserSubscription;
+import com.gotogym.utils.ErrorConstants;
 
 @Path("subscription")
 public class UserSubscriptionAPIImpl implements GenericAPI {

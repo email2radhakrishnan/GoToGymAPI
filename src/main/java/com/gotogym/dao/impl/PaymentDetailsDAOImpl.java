@@ -11,9 +11,9 @@ import org.hibernate.Transaction;
 
 import com.gotogym.dao.PaymentDetailsDAO;
 import com.gotogym.error.ApplicationException;
-import com.gotogym.error.ErrorConstants;
 import com.gotogym.hibernate.config.HibernateConfig;
 import com.gotogym.model.PaymentDetails;
+import com.gotogym.utils.ErrorConstants;
 
 public class PaymentDetailsDAOImpl implements PaymentDetailsDAO {
 

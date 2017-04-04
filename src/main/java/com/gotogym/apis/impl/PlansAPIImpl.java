@@ -13,8 +13,8 @@ import javax.ws.rs.core.Response;
 import com.gotogym.dao.impl.PlanDAOImpl;
 import com.gotogym.error.ApplicationException;
 import com.gotogym.error.Error;
-import com.gotogym.error.ErrorConstants;
 import com.gotogym.model.Plan;
+import com.gotogym.utils.ErrorConstants;
 
 @Path("/plan")
 public class PlansAPIImpl implements GenericAPI {

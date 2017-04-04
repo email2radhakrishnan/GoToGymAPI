@@ -1,6 +1,9 @@
 package com.test;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -12,10 +15,26 @@ import javax.ws.rs.core.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.gotogym.dao.impl.UserSubscriptionDAOImpl;
+import com.gotogym.error.ApplicationException;
 import com.gotogym.model.Plan;
+import com.gotogym.model.UserSubscription;
 
 @Path("/ftocservice")
 public class TEstClass {
+	
+	public static void main(String[] args) {
+
+		try {
+			UserSubscriptionDAOImpl.getObject().subscripeForPlan("rk", "planName_rk", 10, 3);
+		} catch (ApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("done");
+	}
+	
 	@Path("/1")
 	@GET
 	@Produces("application/json")
