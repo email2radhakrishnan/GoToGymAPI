@@ -1,0 +1,33 @@
+API URL
+----
+Plans
+----
+http://localhost:8080/GoToGymsAPI/gotogyms/plan/all
+http://localhost:8080/GoToGymsAPI/gotogyms/plan?planName=plan_1799
+
+
+gymLogs
+-------
+http://localhost:8080/GoToGymsAPI/gotogyms/gymlogs/client?clientName=GotoGym
+http://localhost:8080/GoToGymsAPI/gotogyms/gymlogs/user?userName=venkat
+http://localhost:8080/GoToGymsAPI/gotogyms/gymlogs/plan?planName=plan_4567
+http://localhost:8080/GoToGymsAPI/gotogyms/gymlogs/date?logDate=31-03-2017
+http://localhost:8080/GoToGymsAPI/gotogyms/gymlogs/paidlogs
+http://localhost:8080/GoToGymsAPI/gotogyms/gymlogs/unpaidlogs
+
+
+payment
+----
+http://localhost:8080/GoToGymsAPI/gotogyms/paymentDetails?payDate=11-02-2017
+http://localhost:8080/GoToGymsAPI/gotogyms/paymentDetails/client?clientName=GoToGym
+
+
+subscription
+------
+
+http://localhost:8080/GoToGymsAPI/gotogyms/subscription/user?userName=krish1
+http://localhost:8080/GoToGymsAPI/gotogyms/subscription/plan?planName=plan_123
+http://localhost:8080/GoToGymsAPI/gotogyms/subscription?purchasedDate=01-03-2017
+http://localhost:8080/GoToGymsAPI/gotogyms/active
+POST : http://localhost:8080/GoToGymsAPI/gotogyms/subscription/subscribe?userName=krish&planName=plan_123&numberOfEntries=10&validity=20
+POST : http://localhost:8080/GoToGymsAPI/gotogyms/subscription/updateEntry?userName=radha&planName=plan_123
