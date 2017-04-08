@@ -194,16 +194,15 @@ public class GymClientDAOImpl implements GymClientDAO {
 		}
 	}
 
-	public void updateClientPassword(String passSalt, String passHash, Long phone) throws ApplicationException {
+	public void updateClientPassword(byte[] passHash, Long phone) throws ApplicationException {
 
 		Session session = factory.openSession();
 		Transaction tx = null;
 		List<GymClient> gymClients = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session.createQuery(
-					"Update com.gotogym.model.GymClient set salt = :salt, hash = :hash where phone = :phone");
-			query.setParameter("salt", passSalt);
+			Query query = session
+					.createQuery("Update com.gotogym.model.GymClient set hash = :hash where phone = :phone");
 			query.setParameter("hash", passHash);
 			query.setParameter("phone", phone);
 			query.executeUpdate();
@@ -222,6 +221,34 @@ public class GymClientDAOImpl implements GymClientDAO {
 		} finally {
 			session.close();
 		}
+	}
+
+	@Override
+	public List<GymClient> getAllGymClient() throws ApplicationException {
+
+		Session session = factory.openSession();
+		Transaction tx = null;
+		List<GymClient> gymClients = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery(" from com.gotogym.model.GymClient");
+			gymClients = query.list();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} catch (Exception e) {
+			ApplicationException appExce = new ApplicationException(ErrorConstants.ERROR_CODE_GENERAL,
+					ErrorConstants.ERROR_DESC_GENERAL);
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+			throw appExce;
+		} finally {
+			session.close();
+		}
+		return gymClients;
+
 	}
 
 }

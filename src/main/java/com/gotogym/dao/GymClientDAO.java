@@ -8,6 +8,8 @@ import com.gotogym.model.GymClient;
 
 public interface GymClientDAO {
 
+	public List<GymClient> getAllGymClient() throws ApplicationException;
+
 	public List<GymClient> getGymClientByName(String clientName) throws ApplicationException;
 
 	public GymClient getGymClientByPhone(Long phone) throws ApplicationException;
@@ -20,6 +22,6 @@ public interface GymClientDAO {
 
 	public void registerGymClient(GymClient gymClient) throws ApplicationException;
 
-	public void updateClientPassword(String passSalt, String passHash, Long phone) throws ApplicationException;
+	public void updateClientPassword(byte[] passHash, Long phone) throws ApplicationException;
 
 }

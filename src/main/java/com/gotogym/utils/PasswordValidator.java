@@ -84,7 +84,7 @@ public class PasswordValidator {
 		System.out.println("salt : " + salt);
 		byte[] hash = hash(password, salt);
 		System.out.println("Hash : " + hash);
-		char[] givenPass = { 'T', 'e', '@', '2' };
+		char[] givenPass = { 't', 'e', '@', '2' };
 		System.out.println("is passowrd same : " + isExpectedPassword(givenPass, salt, hash));
 	}
 

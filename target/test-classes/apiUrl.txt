@@ -31,3 +31,26 @@ http://localhost:8080/GoToGymsAPI/gotogyms/subscription?purchasedDate=01-03-2017
 http://localhost:8080/GoToGymsAPI/gotogyms/active
 POST : http://localhost:8080/GoToGymsAPI/gotogyms/subscription/subscribe?userName=krish&planName=plan_123&numberOfEntries=10&validity=20
 POST : http://localhost:8080/GoToGymsAPI/gotogyms/subscription/updateEntry?userName=radha&planName=plan_123
+
+
+
+GymClients
+---------
+http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/clients?clientName=test
+http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/phone?phone=9677045190
+http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/email?email=test
+http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/city?city=chennai
+http://localhost:8080/GoToGymsAPI/gotogyms/gymClient?regDate=19-03-2017
+
+POST : http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/updatePass?hash=[B@61bbe9ba&salt=[B@5c0369c4&phone=10628603
+
+POST : http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/register
+{
+		"clientName":"gotogym",
+		"phone":"10628603",
+		"email":"gotogym@gmail.com",
+		"city":"chennai",
+		"address1":"2401 windy hill rd",
+		"salt":"[B@61bbe9ba",
+		"hash":"[B@5c0369c4"
+	}

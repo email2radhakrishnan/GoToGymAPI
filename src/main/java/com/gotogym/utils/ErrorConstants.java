@@ -26,6 +26,9 @@ public interface ErrorConstants {
 	public static final String ERROR_CODE_EMAIL_INVALD = "The given email is invalid.";
 	public static final String ERROR_DESC_EMAIL_INVALD = "GTG_107";
 
+	public static final String ERROR_DESC_PASSWORD_INVALD = "The given password is invalid";
+	public static final String ERROR_CODE_PASSWORD_INVALD = "GTG_107";
+
 	public static final String ERROR_DESC_GENERAL = "Error occured while processing the service.";
 	public static final String ERROR_CODE_GENERAL = "GTG_102";
 

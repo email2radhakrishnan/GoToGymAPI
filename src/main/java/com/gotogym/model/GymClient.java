@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -24,10 +25,10 @@ public class GymClient {
 	String email;
 
 	@Column(name = "client_hash")
-	String hash;
+	byte[] hash;
 
 	@Column(name = "client_pass")
-	String salt;
+	byte[] salt;
 
 	@Column(name = "client_reg_date")
 	Date registerDate;
@@ -44,11 +45,14 @@ public class GymClient {
 	@Column(name = "client_city")
 	String city;
 
+	@Transient
+	String password;
+
 	public GymClient() {
 	}
 
-	public GymClient(String clientName, Long phone, String email, String hash, String salt, Date registerDate,
-			Date updatedTime, String address1, String address2, String city) {
+	public GymClient(String clientName, Long phone, String email, byte[] hash, byte[] salt, Date registerDate,
+			Date updatedTime, String address1, String address2, String city, String password) {
 		super();
 		this.clientName = clientName;
 		this.phone = phone;
@@ -60,6 +64,7 @@ public class GymClient {
 		this.address1 = address1;
 		this.address2 = address2;
 		this.city = city;
+		this.password = password;
 	}
 
 	public String getClientName() {
@@ -86,19 +91,19 @@ public class GymClient {
 		this.email = email;
 	}
 
-	public String getHash() {
+	public byte[] getHash() {
 		return hash;
 	}
 
-	public void setHash(String hash) {
+	public void setHash(byte[] hash) {
 		this.hash = hash;
 	}
 
-	public String getSalt() {
+	public byte[] getSalt() {
 		return salt;
 	}
 
-	public void setSalt(String salt) {
+	public void setSalt(byte[] salt) {
 		this.salt = salt;
 	}
 
@@ -140,6 +145,14 @@ public class GymClient {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
