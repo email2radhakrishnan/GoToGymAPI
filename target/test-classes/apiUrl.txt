@@ -42,15 +42,15 @@ http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/email?email=test
 http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/city?city=chennai
 http://localhost:8080/GoToGymsAPI/gotogyms/gymClient?regDate=19-03-2017
 
-POST : http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/updatePass?hash=[B@61bbe9ba&salt=[B@5c0369c4&phone=10628603
+POST : http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/updatePass?pass=test&phone=10628603
 
 POST : http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/register
 {
 		"clientName":"gotogym",
-		"phone":"10628603",
+		"phone":"63495634875",
 		"email":"gotogym@gmail.com",
 		"city":"chennai",
 		"address1":"2401 windy hill rd",
-		"salt":"[B@61bbe9ba",
-		"hash":"[B@5c0369c4"
+		"pass" : "tereft"
+	
 	}

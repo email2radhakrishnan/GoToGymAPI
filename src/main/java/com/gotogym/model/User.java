@@ -1,76 +1,53 @@
 package com.gotogym.model;
 
+import java.util.Date;
 
-import java.util.Calendar;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.Type;
+
+@XmlRootElement
+@Entity
+@Table(name = "user_info")
 public class User {
 
-	public static void main(String[] args) {
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, -3);
-		System.out.println("Date = "+ cal.getTime());
-
-	}
-	String userName;
-
-	String gymId;
-
-	String gymName;
-
-	String firstName;
-
-	String lastName;
-
+	@Column(name = "mailid")
 	String email;
-
+	@Id
+	@Column(name = "mobile")
 	Long phone;
-
-	String address;
-
+	@Column(name = "first_name")
+	String firstName;
+	@Column(name = "last_name")
+	String lastName;
+	@Column(name = "city")
 	String city;
+	@Column(name = "validSubscription")
+	@Type(type="yes_no")
+	Boolean validSubscription;
+	@Column(name = "createdDate")
+	Date createdDate;
+	@Column(name = "updatedDate")
+	Date updatedDate;
 
-	String password;
-
-	String status;
-
-	String type;
-
-	byte[] salt;
-
-	byte[] hash;
-	
-	Plan userPlan;
-
-	public String getGymId() {
-		return gymId;
+	public User() {
 	}
 
-	public void setGymId(String gymId) {
-		this.gymId = gymId;
-	}
-
-	public String getGymName() {
-		return gymName;
-	}
-
-	public void setGymName(String gymName) {
-		this.gymName = gymName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
+	public User(String email, Long phone, String firstName, String lastName, String city, Boolean validSubscription,
+			Date createdDate, Date updatedDate) {
+		super();
+		this.email = email;
+		this.phone = phone;
 		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
 		this.lastName = lastName;
+		this.city = city;
+		this.validSubscription = validSubscription;
+		this.createdDate = createdDate;
+		this.updatedDate = updatedDate;
 	}
 
 	public String getEmail() {
@@ -89,12 +66,20 @@ public class User {
 		this.phone = phone;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getCity() {
@@ -105,52 +90,28 @@ public class User {
 		this.city = city;
 	}
 
-	public String getPassword() {
-		return password;
+	public Boolean getValidSubscription() {
+		return validSubscription;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setValidSubscription(Boolean validSubscription) {
+		this.validSubscription = validSubscription;
 	}
 
-	public String getStatus() {
-		return status;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
-	public String getType() {
-		return type;
+	public Date getUpdatedDate() {
+		return updatedDate;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public byte[] getSalt() {
-		return salt;
-	}
-
-	public void setSalt(byte[] salt) {
-		this.salt = salt;
-	}
-
-	public byte[] getHash() {
-		return hash;
-	}
-
-	public void setHash(byte[] hash) {
-		this.hash = hash;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
 	}
 
 }

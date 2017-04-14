@@ -2,19 +2,27 @@ package com.gotogym.dao;
 
 import java.util.List;
 
+import com.gotogym.error.ApplicationException;
 import com.gotogym.model.User;
 
 public interface UserDAO {
 
-	List<User> getAllUser();
+	List<User> getAllUser() throws ApplicationException;
 
-	User getUserByEmail(String email);
+	User getUserByEmail(String email) throws ApplicationException;
 
-	int createUser(User user);
+	User getUserByPhone(Long phone) throws ApplicationException;
 
-	void updatedUser(User user);
+	void createUser(User user) throws ApplicationException;
 
-	void deleteUser(String emailId);
+	void updateUserByPhone(User user) throws ApplicationException;
 
-	void updatePassword(byte[] salt, byte[] hash, String userName);
+	void deleteUserByPhone(User user) throws ApplicationException;
+
+	List<User> getSubscribedUsers() throws ApplicationException;
+
+	List<User> getUnSubscribedUsers() throws ApplicationException;
+
+	void updateSubscriptionFlagByPhone(Long phone, boolean validSubscription) throws ApplicationException;
+
 }

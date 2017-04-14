@@ -7,6 +7,7 @@ import com.gotogym.model.GymClient;
 import com.gotogym.model.GymLogs;
 import com.gotogym.model.PaymentDetails;
 import com.gotogym.model.Plan;
+import com.gotogym.model.User;
 import com.gotogym.model.UserSubscription;
 
 public class HibernateConfig {
@@ -20,7 +21,8 @@ public class HibernateConfig {
 		if (factory == null) {
 			factory = new AnnotationConfiguration().configure().addAnnotatedClass(Plan.class)
 					.addAnnotatedClass(GymLogs.class).addAnnotatedClass(PaymentDetails.class)
-					.addAnnotatedClass(UserSubscription.class).addAnnotatedClass(GymClient.class).buildSessionFactory();
+					.addAnnotatedClass(UserSubscription.class).addAnnotatedClass(GymClient.class)
+					.addAnnotatedClass(User.class).buildSessionFactory();
 		}
 		return factory;
 	}

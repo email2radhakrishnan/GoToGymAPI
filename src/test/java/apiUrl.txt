@@ -54,3 +54,29 @@ POST : http://localhost:8080/GoToGymsAPI/gotogyms/gymClient/register
 		"pass" : "tereft"
 	
 	}
+	
+
+usres
+-------
+http://localhost:8080/GoToGymsAPI/gotogyms/users/all
+http://localhost:8080/GoToGymsAPI/gotogyms/users/phone?phone=10628603
+http://localhost:8080/GoToGymsAPI/gotogyms/users/email?email=radha@yahoo.com
+http://localhost:8080/GoToGymsAPI/gotogyms/users/subscribedUsers
+http://localhost:8080/GoToGymsAPI/gotogyms/users/unsubscribedUsers
+POST : http://localhost:8080/GoToGymsAPI/gotogyms/users/updateSubscriptionFlag?phone=1234&validSubscription=true
+POST : http://localhost:8080/GoToGymsAPI/gotogyms/users/create
+{
+		"firstName":"gotogym",
+		"phone":"10628603",
+		"email":"gotogym@gmail.com",
+		"city":"chennai"
+	}
+
+POST : http://localhost:8080/GoToGymsAPI/gotogyms/users/update
+
+{
+		"firstName":"gotogym",
+		"phone":"10628603",
+		"email":"gotogym@gmail.com",
+		"city":"nellai"
+	}
