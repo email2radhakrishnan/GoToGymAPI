@@ -80,3 +80,5 @@ POST : http://localhost:8080/GoToGymsAPI/gotogyms/users/update
 		"email":"gotogym@gmail.com",
 		"city":"nellai"
 	}
+	
+	// sample pr
