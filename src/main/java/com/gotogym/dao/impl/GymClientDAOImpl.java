@@ -34,7 +34,7 @@ public class GymClientDAOImpl implements GymClientDAO {
 
 	@Override
 	public List<GymClient> getGymClientByName(String clientName) throws ApplicationException {
-
+		System.out.println("test");
 		Session session = factory.openSession();
 		Transaction tx = null;
 		List<GymClient> gymClients = null;
