@@ -31,6 +31,7 @@ public class UserAPIImpl implements GenericAPI {
 	public Response getAllUser() {
 
 		try {
+			System.out.println("test");
 			List<User> users = UserDAOImpl.getObject().getAllUser();
 
 			GenericEntity<List<User>> result = new GenericEntity<List<User>>(users) {
