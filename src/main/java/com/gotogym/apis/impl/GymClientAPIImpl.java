@@ -33,7 +33,7 @@ public class GymClientAPIImpl implements GenericAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getALLGymClient() {
 		try {
-
+			System.out.println("test");
 			List<GymClient> gymClients = GymClientDAOImpl.getObject().getAllGymClient();
 			GenericEntity<List<GymClient>> result = new GenericEntity<List<GymClient>>(gymClients) {
 			};
